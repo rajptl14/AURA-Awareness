@@ -1,355 +1,122 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="light">
 <head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
- 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AURA Awareness — Early Detection, Enhanced Life</title>
-  <style>
-/* ============================
-   AURA Awareness — Design Tokens
-   ============================ */
-:root {
-  --color-bg: #FAFAF8;
-  --color-ink: #13151A;
-  --color-ink-muted: #6B6F76;
-  --color-accent: #204CEB;
-  --color-accent-soft: rgba(32, 76, 235, 0.08);
-  --color-line: #E8E6DF;
- 
-  --font-display: 'Instrument Serif', Georgia, serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
- 
-  --topbar-h: 72px;
-}
- 
-* {
-  box-sizing: border-box;
-}
- 
-html, body {
-  margin: 0;
-  padding: 0;
-}
- 
-body {
-  background: var(--color-bg);
-  color: var(--color-ink);
-  font-family: var(--font-body);
-  -webkit-font-smoothing: antialiased;
-}
- 
-a {
-  color: inherit;
-  text-decoration: none;
-}
- 
-/* ============================
-   Top bar
-   ============================ */
-.topbar {
-  height: var(--topbar-h);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
- 
-.wordmark {
-  font-family: var(--font-mono);
-  font-weight: 500;
-  font-size: 0.95rem;
-  letter-spacing: 0.12em;
-}
- 
-.topbar-nav {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  font-size: 0.95rem;
-}
- 
-.topbar-nav a {
-  color: var(--color-ink-muted);
-  transition: color 0.15s ease;
-}
- 
-.topbar-nav a:hover,
-.topbar-nav a:focus-visible {
-  color: var(--color-ink);
-}
- 
-.topbar-cta {
-  color: var(--color-accent) !important;
-  font-weight: 500;
-}
- 
-/* ============================
-   Hero
-   ============================ */
-.hero {
-  display: grid;
-  grid-template-columns: 1fr 160px;
-  max-width: 900px;
-  margin: 0 auto;
-  gap: 3rem;
-  align-items: center;
-  min-height: calc(100vh - var(--topbar-h));
-  padding: 0 2rem;
-}
- 
-.hero-text {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
- 
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-accent);
-  margin: 0;
-}
- 
-.hero-h1 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 3.4rem;
-  line-height: 1.08;
-  margin: 0;
-}
- 
-.hero-h1 em {
-  font-style: italic;
-}
- 
-.accent {
-  color: var(--color-accent);
-}
- 
-.hero-sub {
-  max-width: 480px;
-  font-size: 1.15rem;
-  line-height: 1.5;
-  color: var(--color-ink-muted);
-  font-family: var(--font-body);
-  font-weight: 300;
-  margin: 0;
-}
- 
-.hero-actions {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  margin-top: 0.5rem;
-}
- 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.85rem 1.6rem;
-  border-radius: 2px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  transition: opacity 0.15s ease, background 0.15s ease;
-}
- 
-.btn-primary {
-  background: var(--color-accent);
-  color: #FAFAF8;
-}
- 
-.btn-primary:hover,
-.btn-primary:focus-visible {
-  opacity: 0.88;
-}
- 
-.btn-ghost {
-  color: var(--color-ink);
-  border-bottom: 1px solid var(--color-ink);
-  border-radius: 0;
-  padding: 0.85rem 0.1rem;
-}
- 
-.btn-ghost:hover,
-.btn-ghost:focus-visible {
-  color: var(--color-accent);
-  border-color: var(--color-accent);
-}
- 
-/* ============================
-   Signal strip — signature element
-   ============================ */
-.signal {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.4rem;
-  padding-left: 1.5rem;
-  border-left: 1px solid var(--color-line);
-}
- 
-.signal-track {
-  position: absolute;
-  left: -1px;
-  top: 0;
-  width: 1px;
-  height: 100%;
-  overflow: hidden;
-}
- 
-.signal-pulse {
-  position: absolute;
-  left: 0;
-  top: -40px;
-  width: 1px;
-  height: 40px;
-  background: linear-gradient(to bottom, transparent, var(--color-accent), transparent);
-  animation: pulse-travel 3.2s ease-in-out infinite;
-}
- 
-@keyframes pulse-travel {
-  0%   { top: -40px; }
-  60%  { top: 100%; }
-  100% { top: 100%; }
-}
- 
-.signal-figure {
-  font-family: var(--font-mono);
-  font-size: 2.6rem;
-  font-weight: 500;
-  line-height: 1;
-  margin: 0;
-  color: var(--color-ink);
-}
- 
-.signal-unit {
-  font-size: 1.4rem;
-  color: var(--color-ink-muted);
-}
- 
-.signal-label {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  line-height: 1.4;
-  color: var(--color-ink-muted);
-  margin: 0;
-}
- 
-.signal-source {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--color-line);
-  margin: 0.5rem 0 0;
-}
- 
-/* ============================
-   Motion preference
-   ============================ */
-@media (prefers-reduced-motion: reduce) {
-  .signal-pulse {
-    animation: none;
-    opacity: 0;
-  }
-}
- 
-/* ============================
-   Responsive
-   ============================ */
-@media (max-width: 720px) {
-  .hero {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    min-height: auto;
-  }
- 
-  .signal {
-    border-left: none;
-    border-top: 1px solid var(--color-line);
-    padding-left: 0;
-    padding-top: 1.5rem;
-  }
- 
-  .signal-track {
-    display: none;
-  }
- 
-  .hero-h1 {
-    font-size: 2.5rem;
-  }
-  .topbar {
-    padding: 0 1.25rem;
-  }
-}
-     .navbar-logo {
-    height: 100px;
-    width: auto;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 1px solid #E8E6DF;
-    background: white;
-    padding: 2px;
-    transform: translateY(3px);
-}
-  }
-  </style>
+  
+  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us</title>
 </head>
-<body>
- 
-  <header class="topbar">
-    <img src="AURA Logo.png"
-      alt="AURA"
-       class="navbar-logo">
-    <nav class="topbar-nav">
-      <a href="#mission">Our Mission</a>
-      <a href="About Us.html">About Us</a>
-      <a href="#donate" class="topbar-cta">Donate</a>
-    </nav>
-  </header>
- 
-  <main class="hero" id="hero">
- 
-    <div class="hero-text">
-      <p class="eyebrow">Cancer Awareness &amp; Early Detection</p>
- 
-      <h1 class="hero-h1">
-        Early Detection,
-        <em><span class="accent">Enhanced</span></em> Life.
-      </h1>
- 
-      <p class="hero-sub">
-        Raising funds to aid early detection of cancers through our community —
-        because the earliest signal is still the most powerful one.
-      </p>
- 
-      <div class="hero-actions">
-        <a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early" class="btn btn-primary">Donate now</a>
-        <a href="#mission" class="btn btn-ghost">Learn more</a>
+<style>
+    :root {
+      --card: #ffffff;
+      --border: #e8e6df;
+      --text: #13151a;
+      --text2: #6b6f76;
+      --mono: 'JetBrains Mono', monospace;
+    }
+      #projects {
+      max-width: 900px;
+      margin: 120px auto;
+      padding: 0 20px;
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      min-height: 0px;
+    }
+    .project-card:hover {
+      transform: translateY(-3px);
+      border-color: #ddccba;
+    }
+    .project-card h3 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: var(--text);
+      margin: 0 0 0.5rem 0;
+    }
+    .project-card .project-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #b5544a;
+      margin: 0 0 0.75rem 0;
+      font-weight: 500;
+    }
+    .project-card p {
+      font-size: 0.95rem;
+      color: var(--text2);
+      margin: 0;
+      flex-grow: 1;
+      line-height: 1.7;
+    }
+    #about{
+      font-family:'JetBrains Mono', monospace; 
+    }
+</style>
+<section>
+    <section id="projects">
+  <h2 class="section-heading">About</h2>
+  <p class="section-intro">
+At AURA Awareness, we believe that every life deserves the opportunity for early intervention and better outcomes. Our mission is to raise awareness about cancer, educate communities about the importance of early detection, and support initiatives that help identify cancer when treatment is most effective. By bringing people together through advocacy and fundraising, we hope to create a future where more lives are saved through timely diagnosis.  </p>
+
+  <div class="project-grid">
+
+    <!-- Project card 1 -->
+    <div class="project-card">
+      <h3>Raj Patel</h3>
+      <p class="project-eyebrow">CoFounder · UW-Madison</p>
+      <p>Raj Patel is an incoming freshman at the UW-Madison. <br> Prior to Wisconsin, Raj studied at the rigorous Illinois Mathematics and Science Academy. He aims to become a physician in Neuroscience through the intersection of computer science and communication. Research through Northwestern and the University of Illinois-Chicago gained him invaluable hands-on experience in not just prepping assays in the lab, but in understanding how disease impacts the people it touches. Thus, Raj cofounded this fundraiser to help combat disease. </br>
+</p>
+    </div>
+
+    <!-- Project card 2 -->
+    <div class="project-card">
+      <h3>Aydin Syed</h3>
+      <p class="project-eyebrow"> Cofounder · Case Western Reserve University</p>
+      <p>Aydin Syed is an incoming Freshman at Case Western Reserve University in Ohio. He studied at the Illinois Mathematics and Science Academy. Aydin aims to become a medical practitioner in orthopedics or oncology. Aydin had a mother and aunt who were diagnosed with breast cancer, and were thankfully saved by early detection.  This experience motivated him to start this fundraiser to benefit cancer research. He also created his own fundraiser using his birthday money when he was younger and raised 1500 dollars to send to pediatric cancer research.</p>
+  
+    </div>
+
+    <!-- Project card 3 -->
+    <div class="project-card">
+      <h3>Krish Sav</h3>
+      <p class="project-eyebrow">Vice President · IMSA</p>
+      <p>Pratayanch Sav (Krish) is a rising Senior at the Illinois Mathematics and Science Academy. Krish aims to become a neurosurgeon and attain  a PhD in the long run. Krish has contributed to the field of oncology and neurology by helping develop and assess a project dedicated to helping provide 98.2% accurate diagnosis and prognosis based on past MRI brain scans of patients. His research with cancer and neuroscience allowed him to pursue further means of outreach for underserved communities, inspiring his commitment to expanding AURA’s mission of equitable access to early detection and cutting-edge medical research.</p>
+      <div class="project-links">
+        <a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early" target="_blank">GoFundMe</a>
       </div>
     </div>
- 
-    <aside class="signal" aria-label="Early detection statistic">
-      <div class="signal-track">
-        <span class="signal-pulse" aria-hidden="true"></span>
-      </div>
-      <p class="signal-figure">90<span class="signal-unit">%</span></p>
-      <p class="signal-label">5-year survival<br>rate when caught<br>early</p>
-      <p class="signal-source">— placeholder, update with source</p>
-    </aside>
- 
-  </main>
- 
-</body>
-</html>
+
+    <!-- 4th project -->
+    <div class="project-card">
+      <h3>Nick Patel</h3>
+      <p class="project-eyebrow"> Tresurer · Georgia Tech University</p>
+      <p> Nick Patel is an incoming freshman at the Georgia Institute of Technology.
+
+Nick has a passion for innovation at the intersection of technology and healthcare. As Treasurer of his school's Future Business Leaders of America (FBLA) chapter, he developed strong leadership, organizational, and problem-solving skills while helping lead initiatives within his community. He aspires to study engineering and contribute to advancements in early cancer detection technology, with the goal of improving patient outcomes and making life-saving diagnoses more accessible. Through AURA Awareness, Nick hopes to combine his passion for service and innovation to support the fight against cancer and promote a healthier future. </p>
+    </div>
+
+    <!-- 5th project -->
+    <div class="project-card">
+      <h3>Max Ballesteros</h3>
+      <p class="project-eyebrow"> Art Head · IMSA</p>
+      <p> Investigated how page length relates to false positives in GPT-0, discovering GPT-0 flagged our human essays. I presented to an audience of 25 at the ISAAPT conference </p>
+    </div>
+  </div>
+</section>
