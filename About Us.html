@@ -1,274 +1,212 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        /* --- Reset & Base Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-  <link rel="stylesheet" href="css/style.css">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us — AURA Awareness</title>
+        body {
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
 
-  <style>
-    .about-hero{
-      max-width:1200px;
-      margin:4rem auto 6rem;
-      padding:0 2rem;
-      display:grid;
-      grid-template-columns:1.1fr 0.9fr;
-      gap:4rem;
-      align-items:center;
-    }
-    
-    .about-hero h1{
-      font-family:'Instrument Serif',serif;
-      font-size:4rem;
-      line-height:0.95;
-      margin-bottom:1.5rem;
-    }
-    
-    .about-image img{
-      width:100%;
-      border-radius:24px;
-      display:block;
-    }
-    
-    .hero-button{
-      display:inline-block;
-      margin-top:1.5rem;
-      padding:0.9rem 1.4rem;
-      border-radius:999px;
-      background:var(--color-accent);
-      color:white;
-    }
-    
-    .mission-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:1.5rem;
-    }
-    
-    .mission-card{
-      padding:2rem;
-      border:1px solid var(--color-line);
-      border-radius:20px;
-    }
-    
-    .member-photo{
-      width:80px;
-      height:80px;
-      border-radius:50%;
-      object-fit:cover;
-      margin-bottom:1rem;
-    }
-    
-    .cta-section{
-      text-align:center;
-      max-width:800px;
-      margin:6rem auto;
-      padding:0 2rem;
-    }
-    
-    @media (max-width:900px){
-    
-      .about-hero{
-        grid-template-columns:1fr;
-      }
-    
-      .about-hero h1{
-        font-size:3rem;
-      }
-    
-      .mission-grid{
-        grid-template-columns:1fr;
-      }
-    }
-  </style>
+        /* --- Navigation Bar --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #0f172a; /* Dark slate */
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-logo a {
+            color: #f8fafc;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, 
+        .nav-links a.active {
+            color: #38bdf8; /* Bright sky blue active/hover state */
+        }
+
+        /* --- Main About Container --- */
+        .about-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .about-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            object-fit: cover;
+            max-height: 500px;
+        }
+
+        .about-content h1 {
+            font-size: 2.5rem;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+
+        .about-content .subtitle {
+            font-size: 1.2rem;
+            color: #0284c7;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: #475569;
+        }
+
+        /* --- Core Values Section --- */
+        .values-section {
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        .values-section h2 {
+            font-size: 2rem;
+            color: #0f172a;
+            margin-bottom: 3rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: #ffffff;
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-card h3 {
+            color: #0f172a;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* --- Responsive Design Media Query --- */
+        @media (max-width: 768px) {
+            .about-hero {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<!-- HERO -->
 
-<section class="about-hero">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-logo">
+            <a href="#">BRAND</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#" class="active">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
 
-  <div class="about-copy">
-    <p class="section-eyebrow">Our Story</p>
+    <!-- Main Content -->
+    <main class="about-container">
+        
+        <!-- Hero Section -->
+        <section class="about-hero">
+            <div class="about-image">
+                <!-- Placeholder image - swap this out with your own URL later! -->
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Our Team Working Together">
+            </div>
+            <div class="about-content">
+                <span class="subtitle">Who We Are</span>
+                <h1>We building digital products that matter.</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </section>
 
-```
-<h1>
-  Fighting cancer through awareness, education, and early detection.
-</h1>
+        <!-- Values Section -->
+        <section class="values-section">
+            <h2>Our Core Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <h3>Innovation</h3>
+                    <p>We push boundaries and challenge the status quo to find creative solutions.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Integrity</h3>
+                    <p>Honesty, transparency, and doing the right thing drive everything we do.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Collaboration</h3>
+                    <p>We believe great things happen when diverse minds come together.</p>
+                </div>
+            </div>
+        </section>
 
-<p>
-  AURA Awareness was founded by students who have witnessed the impact
-  that cancer has on individuals, families, and communities. Through
-  education, advocacy, and fundraising, we aim to promote early detection
-  and support efforts that improve outcomes for patients worldwide.
-</p>
-
-<a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early"
-   class="hero-button">
-   Support Our Mission →
-</a>
-```
-
-  </div>
-
-  <div class="about-image">
-    <img src="images/team.jpg" alt="AURA Awareness Team">
-  </div>
-
-</section>
-
-<!-- MISSION -->
-
-<section class="mission-section">
-
-  <div class="section-header">
-    <p class="section-eyebrow">Our Mission</p>
-    <h2>Why We Exist</h2>
-  </div>
-
-  <div class="mission-grid">
-
-```
-<div class="mission-card">
-  <h3>Educate</h3>
-  <p>
-    Provide accessible information about cancer prevention,
-    screening, and early detection.
-  </p>
-</div>
-
-<div class="mission-card">
-  <h3>Advocate</h3>
-  <p>
-    Promote awareness and encourage conversations about
-    proactive healthcare within our communities.
-  </p>
-</div>
-
-<div class="mission-card">
-  <h3>Support</h3>
-  <p>
-    Raise funds and support initiatives that contribute
-    to cancer research and patient care.
-  </p>
-</div>
-```
-
-  </div>
-
-</section>
-
-<!-- TEAM -->
-
-<section id="projects">
-
-  <div class="section-header">
-    <p class="section-eyebrow">Leadership</p>
-    <h2>Meet the Team</h2>
-  </div>
-
-  <div class="project-grid">
-
-```
-<div class="project-card">
-  <img src="images/raj.jpg" class="member-photo" alt="Raj Patel">
-
-  <h3>Raj Patel</h3>
-  <p class="project-eyebrow">Co-Founder · UW–Madison</p>
-
-  <p>
-    Interested in medicine, neuroscience, and disease research,
-    Raj helped establish AURA Awareness to promote education and
-    early detection initiatives.
-  </p>
-</div>
-
-<div class="project-card">
-  <img src="images/aydin.jpg" class="member-photo" alt="Aydin Syed">
-
-  <h3>Aydin Syed</h3>
-  <p class="project-eyebrow">Co-Founder · Case Western Reserve</p>
-
-  <p>
-    Inspired by his family's experience with cancer,
-    Aydin is passionate about expanding awareness and
-    supporting research that improves patient outcomes.
-  </p>
-</div>
-
-<div class="project-card">
-  <img src="images/krish.jpg" class="member-photo" alt="Krish Sav">
-
-  <h3>Krish Sav</h3>
-  <p class="project-eyebrow">Vice President · IMSA</p>
-
-  <p>
-    Krish combines interests in neuroscience and public service
-    to help advance AURA's mission and community outreach efforts.
-  </p>
-</div>
-
-<div class="project-card">
-  <img src="images/nick.jpg" class="member-photo" alt="Nick Patel">
-
-  <h3>Nick Patel</h3>
-  <p class="project-eyebrow">Treasurer · Georgia Tech</p>
-
-  <p>
-    Passionate about engineering and healthcare innovation,
-    Nick supports fundraising initiatives and organizational growth.
-  </p>
-</div>
-
-<div class="project-card">
-  <img src="images/max.jpg" class="member-photo" alt="Max Ballesteros">
-
-  <h3>Max Ballesteros</h3>
-  <p class="project-eyebrow">Creative Director · IMSA</p>
-
-  <p>
-    Max leads creative outreach and visual storytelling efforts
-    that help communicate AURA's mission to broader audiences.
-  </p>
-</div>
-```
-
-  </div>
-
-</section>
-
-<!-- CTA -->
-
-<section class="cta-section">
-
-  <p class="section-eyebrow">Get Involved</p>
-
-  <h2>Help us build a future where more cancers are detected early.</h2>
-
-  <p>
-    Every donation supports awareness initiatives, educational outreach,
-    and efforts that encourage earlier diagnosis and better outcomes.
-  </p>
-
-<a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early"
-  class="hero-button">
-Donate Today → </a>
-
-</section>
-
-  </section>
-
-  <footer>
-    <span>© 2026 AURA Awareness</span>
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="team.html">Our Team</a>
-      <a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early">Donate</a>
-    </div>
-  </footer>
+    </main>
 
 </body>
 </html>
