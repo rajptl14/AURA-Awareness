@@ -1,212 +1,382 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <style>
-        /* --- Reset & Base Styles --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+ 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — AURA Awareness</title>
+  <style>
+/* ============================
+   AURA Awareness — Design Tokens
+   ============================ */
+:root {
+  --color-bg: #FAFAF8;
+  --color-ink: #13151A;
+  --color-ink-muted: #6B6F76;
+  --color-accent: #204CEB;
+  --color-accent-soft: rgba(32, 76, 235, 0.08);
+  --color-line: #E8E6DF;
+ 
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+ 
+  --topbar-h: 72px;
+}
+ 
+* {
+  box-sizing: border-box;
+}
+ 
+html, body {
+  margin: 0;
+  padding: 0;
+}
+ 
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+ 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+ 
+/* ============================
+   Top bar
+   ============================ */
+.topbar {
+  height: var(--topbar-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+ 
+.navbar-logo {
+  height: 100px;
+  width: auto;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #E8E6DF;
+  background: white;
+  padding: 2px;
+  transform: translateY(3px);
+}
+ 
+.topbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: 0.95rem;
+}
+ 
+.topbar-nav a {
+  color: var(--color-ink-muted);
+  transition: color 0.15s ease;
+}
+ 
+.topbar-nav a:hover,
+.topbar-nav a:focus-visible {
+  color: var(--color-ink);
+}
 
-        body {
-            background-color: #f8fafc;
-            color: #334155;
-            line-height: 1.6;
-        }
+.topbar-nav a.active {
+  color: var(--color-ink);
+  font-weight: 500;
+}
+ 
+.topbar-cta {
+  color: var(--color-accent) !important;
+  font-weight: 500;
+}
+ 
+/* ============================
+   Shared section utilities
+   ============================ */
+section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
 
-        /* --- Navigation Bar --- */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #0f172a; /* Dark slate */
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
+.about-hero {
+  padding-top: 6rem;
+  padding-bottom: 4rem;
+}
+ 
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 1rem;
+}
+ 
+.section-h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 3.4rem;
+  line-height: 1.08;
+  margin: 0 0 1.5rem;
+}
 
-        .nav-logo a {
-            color: #f8fafc;
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-decoration: none;
-            letter-spacing: 1px;
-        }
+.section-h2 em {
+  font-style: italic;
+}
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
+.accent {
+  color: var(--color-accent);
+}
+ 
+/* ============================
+   Story / Manifesto Section
+   ============================ */
+.story-body {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 4rem;
+  align-items: start;
+  margin-top: 2rem;
+}
+ 
+.story-lede {
+  font-size: 1.4rem;
+  line-height: 1.45;
+  font-weight: 300;
+  color: var(--color-ink);
+  margin: 0;
+  font-family: var(--font-body);
+}
+ 
+.story-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-ink-muted);
+  font-weight: 300;
+}
+ 
+.story-detail p {
+  margin: 0;
+}
+ 
+/* ============================
+   The Team Section
+   ============================ */
+.team {
+  border-top: 1px solid var(--color-line);
+}
 
-        .nav-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+ 
+.team-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+ 
+.team-avatar {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: var(--color-line);
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+  border-radius: 2px;
+}
 
-        .nav-links a:hover, 
-        .nav-links a.active {
-            color: #38bdf8; /* Bright sky blue active/hover state */
-        }
+.team-card:hover .team-avatar {
+  filter: grayscale(0%);
+}
+ 
+.team-name {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+  color: var(--color-ink);
+}
 
-        /* --- Main About Container --- */
-        .about-container {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
+.team-role {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+  margin: -0.4rem 0 0.2rem;
+}
+ 
+.team-bio {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--color-ink-muted);
+  font-weight: 300;
+  margin: 0;
+}
+ 
+/* ============================
+   Footer
+   ============================ */
+footer {
+  border-top: 1px solid var(--color-line);
+  padding: 2.5rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--color-ink-muted);
+}
+ 
+footer a {
+  color: var(--color-ink-muted);
+  transition: color 0.15s ease;
+}
+ 
+footer a:hover,
+footer a:focus-visible {
+  color: var(--color-accent);
+}
+ 
+footer .footer-links {
+  display: flex;
+  gap: 1.5rem;
+}
+ 
+/* ============================
+   Responsive
+   ============================ */
+@media (max-width: 720px) {
+  .topbar {
+    padding: 0 1.25rem;
+  }
+ 
+  section {
+    padding: 3.5rem 1.25rem;
+  }
 
-        .about-hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
+  .about-hero {
+    padding-top: 4rem;
+  }
 
-        .about-image img {
-            width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            object-fit: cover;
-            max-height: 500px;
-        }
-
-        .about-content h1 {
-            font-size: 2.5rem;
-            color: #0f172a;
-            margin-bottom: 1rem;
-        }
-
-        .about-content .subtitle {
-            font-size: 1.2rem;
-            color: #0284c7;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .about-content p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            color: #475569;
-        }
-
-        /* --- Core Values Section --- */
-        .values-section {
-            margin-top: 5rem;
-            text-align: center;
-        }
-
-        .values-section h2 {
-            font-size: 2rem;
-            color: #0f172a;
-            margin-bottom: 3rem;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .value-card {
-            background: #ffffff;
-            padding: 2.5rem 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .value-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .value-card h3 {
-            color: #0f172a;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        /* --- Responsive Design Media Query --- */
-        @media (max-width: 768px) {
-            .about-hero {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .navbar {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .nav-links {
-                gap: 1.5rem;
-            }
-        }
-    </style>
+  .section-h2 {
+    font-size: 2.5rem;
+  }
+ 
+  .story-body {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+ 
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+ 
+  footer {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    padding: 2rem 1.25rem;
+  }
+}
+  </style>
 </head>
 <body>
-
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-logo">
-            <a href="#">BRAND</a>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#" class="active">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
+ 
+  <!-- Navigation Bar -->
+  <header class="topbar">
+    <!-- Links point cleanly back to index.html sections where relevant -->
+    <a href="index.html"><img src="AURA Logo.png" alt="AURA" class="navbar-logo"></a>
+    <nav class="topbar-nav">
+      <a href="index.html#mission">Our Mission</a>
+      <a href="About Us.html" class="active">About us</a>
+      <a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early" class="topbar-cta">Donate</a>
     </nav>
+  </header>
+ 
+  <!-- Hero / Manifesto Intro -->
+  <main>
+    <section class="about-hero" id="our-story">
+      <p class="section-eyebrow">Behind the Signal</p>
+      <h1 class="section-h2">Driven by purpose, united for <em><span class="accent">impact</span></em>.</h1>
+      
+      <div class="story-body">
+        <p class="story-lede">
+          We are a dedicated group of individuals who believe that actionable awareness shouldn't wait until it is too late. Our initiative stems from a shared passion to change how our community interacts with early cancer warnings.
+        </p>
+        <div class="story-detail">
+          <p>
+            AURA Awareness was formed out of a collective realization: while complex medical advancements continue to progress, basic accessible community fundraising and baseline diagnostic support can immediately shift standard survival numbers. 
+          </p>
+          <p>
+            By channeling resources directly into established organizations like the American Cancer Society, we keep our operations transparent, lean, and intensely focused on the primary objective—empowering lives through early detection.
+          </p>
+        </div>
+      </div>
+    </section>
 
-    <!-- Main Content -->
-    <main class="about-container">
-        
-        <!-- Hero Section -->
-        <section class="about-hero">
-            <div class="about-image">
-                <!-- Placeholder image - swap this out with your own URL later! -->
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Our Team Working Together">
-            </div>
-            <div class="about-content">
-                <span class="subtitle">Who We Are</span>
-                <h1>We building digital products that matter.</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-        </section>
+    <!-- Dedicated Team Section -->
+    <section class="team" id="team">
+      <p class="section-eyebrow">The Core Initiative</p>
+      <h2 class="section-h2" style="font-size: 2.3rem; max-width: 32ch;">The people keeping the pulse alive</h2>
+      
+      <div class="team-grid">
+        <!-- Team Member 1 -->
+        <div class="team-card">
+          <!-- Replace placeholder image src with real pictures later -->
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80" alt="Team Member Name" class="team-avatar">
+          <h3 class="team-name">Jane Doe</h3>
+          <p class="team-role">Founder / Lead Advocate</p>
+          <p class="team-bio">Spearheading project strategy and establishing outreach avenues to keep community initiatives on track.</p>
+        </div>
 
-        <!-- Values Section -->
-        <section class="values-section">
-            <h2>Our Core Values</h2>
-            <div class="values-grid">
-                <div class="value-card">
-                    <h3>Innovation</h3>
-                    <p>We push boundaries and challenge the status quo to find creative solutions.</p>
-                </div>
-                <div class="value-card">
-                    <h3>Integrity</h3>
-                    <p>Honesty, transparency, and doing the right thing drive everything we do.</p>
-                </div>
-                <div class="value-card">
-                    <h3>Collaboration</h3>
-                    <p>We believe great things happen when diverse minds come together.</p>
-                </div>
-            </div>
-        </section>
+        <!-- Team Member 2 -->
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" alt="Team Member Name" class="team-avatar">
+          <h3 class="team-name">John Smith</h3>
+          <p class="team-role">Community Outreach</p>
+          <p class="team-bio">Organizing decentralized local partnerships to push our fundraising efforts past the $1,500 target threshold.</p>
+        </div>
 
-    </main>
-
+        <!-- Team Member 3 -->
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=500&q=80" alt="Team Member Name" class="team-avatar">
+          <h3 class="team-name">Alex Rivera</h3>
+          <p class="team-role">Communications</p>
+          <p class="team-bio">Managing digital campaign distribution to ensure clear information architecture regarding early detection signs.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+ 
+  <!-- Footer -->
+  <footer>
+    <span>© 2026 AURA Awareness</span>
+    <div class="footer-links">
+      <a href="index.html#mission">Mission</a>
+      <a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early">Donate</a>
+      <a href="#our-story">Back to top</a>
+    </div>
+  </footer>
+ 
 </body>
 </html>
