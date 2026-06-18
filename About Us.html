@@ -68,7 +68,51 @@
     #about{
       font-family:'JetBrains Mono', monospace; 
     }
+    .navbar-logo {
+  height: 100px;
+  width: auto;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #E8E6DF;
+  background: white;
+  padding: 2px;
+  transform: translateY(3px);
+}
+ 
+.topbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: 0.95rem;
+}
+ 
+.topbar-nav a {
+  color: var(--color-ink-muted);
+  transition: color 0.15s ease;
+}
+ 
+.topbar-nav a:hover,
+.topbar-nav a:focus-visible {
+  color: var(--color-ink);
+}
+ 
+.topbar-cta {
+  color: var(--color-accent) !important;
+  font-weight: 500;
+}
 </style>
+<body>
+  <header class="topbar">
+    <img src="AURA Logo.png"
+      alt="AURA"
+       class="navbar-logo">
+    <nav class="topbar-nav">
+      <a href="#mission">Our Mission</a>
+      <a href="About Us.html">About us</a>
+      <a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early" class="topbar-cta">Donate</a>
+    </nav>
+  </header>
+</body>
 <section>
     <section id="projects">
   <h2 class="section-heading">About</h2>
