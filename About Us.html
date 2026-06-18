@@ -14,6 +14,9 @@
     /* ============================
    AURA Awareness — Design Tokens
    ============================ */
+/* ============================
+   AURA Awareness — Design Tokens
+   ============================ */
 :root {
   --color-bg: #FAFAF8;
   --color-ink: #13151A;
@@ -66,6 +69,12 @@ img {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(250, 250, 248, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-line);
 }
 
 .wordmark {
@@ -76,37 +85,52 @@ img {
 }
 
 .navbar-logo {
-  height: 100px;
-  width: auto;
+  height: 40px;
+  width: 40px;
   object-fit: cover;
   border-radius: 50%;
-  border: 1px solid #E8E6DF;
+  border: 1px solid var(--color-line);
   background: white;
   padding: 2px;
-  transform: translateY(3px);
 }
 
 .topbar-nav {
   display: flex;
   align-items: center;
-  gap: 2rem;
-  font-size: 0.95rem;
+  gap: 0.25rem;
+  font-size: 0.92rem;
 }
 
 .topbar-nav a {
   color: var(--color-ink-muted);
-  transition: color 0.15s ease;
+  font-weight: 500;
+  padding: 0.5rem 0.85rem;
+  border-radius: 999px;
+  transition: color 0.15s ease, background 0.15s ease;
 }
 
 .topbar-nav a:hover,
-.topbar-nav a:focus-visible,
+.topbar-nav a:focus-visible {
+  color: var(--color-ink);
+  background: var(--color-accent-soft);
+}
+
 .topbar-nav a[aria-current="page"] {
   color: var(--color-ink);
+  background: var(--color-line);
 }
 
 .topbar-cta {
-  color: var(--color-accent) !important;
-  font-weight: 500;
+  color: #FAFAF8 !important;
+  background: var(--color-accent);
+  margin-left: 0.5rem;
+  padding: 0.55rem 1.1rem !important;
+}
+
+.topbar-cta:hover,
+.topbar-cta:focus-visible {
+  color: #FAFAF8 !important;
+  background: var(--color-ink) !important;
 }
 
 /* ============================
