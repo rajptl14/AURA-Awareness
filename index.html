@@ -1,571 +1,572 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
- 
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AURA Awareness — Early Detection, Enhanced Life</title>
   <style>
-/* ============================
-   AURA Awareness — Design Tokens
-   ============================ */
-:root {
-  --color-bg: #FAFAF8;
-  --color-ink: #13151A;
-  --color-ink-muted: #6B6F76;
-  --color-accent: #204CEB;
-  --color-accent-soft: rgba(32, 76, 235, 0.08);
-  --color-line: #E8E6DF;
- 
-  --font-display: 'Instrument Serif', Georgia, serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
- 
-  --topbar-h: 72px;
-}
- 
-* {
-  box-sizing: border-box;
-}
- 
-html, body {
-  margin: 0;
-  padding: 0;
-}
- 
-body {
-  background: var(--color-bg);
-  color: var(--color-ink);
-  font-family: var(--font-body);
-  -webkit-font-smoothing: antialiased;
-}
- 
-a {
-  color: inherit;
-  text-decoration: none;
-}
- 
-/* ============================
-   Top bar
-   ============================ */
-.topbar {
-  height: var(--topbar-h);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
- 
-.wordmark {
-  font-family: var(--font-mono);
-  font-weight: 500;
-  font-size: 0.95rem;
-  letter-spacing: 0.12em;
-}
- 
-.navbar-logo {
-  height: 100px;
-  width: auto;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 1px solid #E8E6DF;
-  background: white;
-  padding: 2px;
-  transform: translateY(3px);
-}
- 
-.topbar-nav {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  font-size: 0.95rem;
-}
- 
-.topbar-nav a {
-  color: var(--color-ink-muted);
-  transition: color 0.15s ease;
-}
- 
-.topbar-nav a:hover,
-.topbar-nav a:focus-visible {
-  color: var(--color-ink);
-}
- 
-.topbar-cta {
-  color: var(--color-accent) !important;
-  font-weight: 500;
-}
- 
-/* ============================
-   Hero
-   ============================ */
-.hero {
-  display: grid;
-  grid-template-columns: 1fr 160px;
-  max-width: 900px;
-  margin: 0 auto;
-  gap: 3rem;
-  align-items: center;
-  min-height: calc(100vh - var(--topbar-h));
-  padding: 0 2rem;
-}
- 
-.hero-text {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
- 
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-accent);
-  margin: 0;
-}
- 
-.hero-h1 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 3.4rem;
-  line-height: 1.08;
-  margin: 0;
-}
- 
-.hero-h1 em {
-  font-style: italic;
-}
- 
-.accent {
-  color: var(--color-accent);
-}
- 
-.hero-sub {
-  max-width: 480px;
-  font-size: 1.15rem;
-  line-height: 1.5;
-  color: var(--color-ink-muted);
-  font-family: var(--font-body);
-  font-weight: 300;
-  margin: 0;
-}
- 
-.hero-actions {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  margin-top: 0.5rem;
-}
- 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.85rem 1.6rem;
-  border-radius: 2px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  transition: opacity 0.15s ease, background 0.15s ease;
-}
- 
-.btn-primary {
-  background: var(--color-accent);
-  color: #FAFAF8;
-}
- 
-.btn-primary:hover,
-.btn-primary:focus-visible {
-  opacity: 0.88;
-}
- 
-.btn-ghost {
-  color: var(--color-ink);
-  border-bottom: 1px solid var(--color-ink);
-  border-radius: 0;
-  padding: 0.85rem 0.1rem;
-}
- 
-.btn-ghost:hover,
-.btn-ghost:focus-visible {
-  color: var(--color-accent);
-  border-color: var(--color-accent);
-}
- 
-/* ============================
-   Signal strip — signature element
-   ============================ */
-.signal {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.4rem;
-  padding-left: 1.5rem;
-  border-left: 1px solid var(--color-line);
-}
- 
-.signal-track {
-  position: absolute;
-  left: -1px;
-  top: 0;
-  width: 1px;
-  height: 100%;
-  overflow: hidden;
-}
- 
-.signal-pulse {
-  position: absolute;
-  left: 0;
-  top: -40px;
-  width: 1px;
-  height: 40px;
-  background: linear-gradient(to bottom, transparent, var(--color-accent), transparent);
-  animation: pulse-travel 3.2s ease-in-out infinite;
-}
- 
-@keyframes pulse-travel {
-  0%   { top: -40px; }
-  60%  { top: 100%; }
-  100% { top: 100%; }
-}
- 
-.signal-figure {
-  font-family: var(--font-mono);
-  font-size: 2.6rem;
-  font-weight: 500;
-  line-height: 1;
-  margin: 0;
-  color: var(--color-ink);
-}
- 
-.signal-unit {
-  font-size: 1.4rem;
-  color: var(--color-ink-muted);
-}
- 
-.signal-label {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  line-height: 1.4;
-  color: var(--color-ink-muted);
-  margin: 0;
-}
- 
-.signal-source {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--color-line);
-  margin: 0.5rem 0 0;
-}
- 
-/* ============================
-   Motion preference
-   ============================ */
-@media (prefers-reduced-motion: reduce) {
-  .signal-pulse {
-    animation: none;
-    opacity: 0;
-  }
-}
- 
-/* ============================
-   Shared section utilities
-   ============================ */
-section {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 5rem 2rem;
-}
- 
-.section-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-accent);
-  margin: 0 0 1rem;
-}
- 
-.section-h2 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 2.3rem;
-  line-height: 1.15;
-  margin: 0 0 1.5rem;
-  max-width: 32ch;
-}
- 
-/* ============================
-   Mission section
-   ============================ */
-.mission {
-  border-top: 1px solid var(--color-line);
-}
- 
-.mission-body {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 4rem;
-  align-items: start;
-}
- 
-.mission-lede {
-  font-size: 1.3rem;
-  line-height: 1.5;
-  font-weight: 300;
-  color: var(--color-ink);
-  margin: 0;
-}
- 
-.mission-detail {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--color-ink-muted);
-  font-weight: 300;
-}
- 
-.mission-detail p {
-  margin: 0;
-}
- 
-/* ============================
-   How funds are used
-   ============================ */
-.funds {
-  background: var(--color-accent-soft);
-  border-top: 1px solid var(--color-line);
-  border-bottom: 1px solid var(--color-line);
-}
- 
-.funds-inner {
-  max-width: 900px;
-  margin: 0 auto;
-}
- 
-.funds-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem;
-  margin-top: 2.5rem;
-}
- 
-.funds-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
- 
-.funds-pct {
-  font-family: var(--font-mono);
-  font-size: 1.8rem;
-  font-weight: 500;
-  color: var(--color-accent);
-}
- 
-.funds-card h3 {
-  font-family: var(--font-body);
-  font-size: 1.05rem;
-  font-weight: 500;
-  margin: 0;
-  color: var(--color-ink);
-}
- 
-.funds-card p {
-  font-size: 0.92rem;
-  line-height: 1.55;
-  color: var(--color-ink-muted);
-  font-weight: 300;
-  margin: 0;
-}
- 
-.funds-note {
-  margin-top: 2.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--color-ink-muted);
-}
- 
-/* ============================
-   Footer
-   ============================ */
-footer {
-  border-top: 1px solid var(--color-line);
-  padding: 2.5rem 2rem;
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.85rem;
-  color: var(--color-ink-muted);
-}
- 
-footer a {
-  color: var(--color-ink-muted);
-  transition: color 0.15s ease;
-}
- 
-footer a:hover,
-footer a:focus-visible {
-  color: var(--color-accent);
-}
- 
-footer .footer-links {
-  display: flex;
-  gap: 1.5rem;
-}
- 
-/* ============================
-   Responsive
-   ============================ */
-@media (max-width: 720px) {
-  .hero {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    min-height: auto;
-  }
- 
-  .signal {
-    border-left: none;
-    border-top: 1px solid var(--color-line);
-    padding-left: 0;
-    padding-top: 1.5rem;
-  }
- 
-  .signal-track {
-    display: none;
-  }
- 
-  .hero-h1 {
-    font-size: 2.5rem;
-  }
- 
-  .topbar {
-    padding: 0 1.25rem;
-  }
- 
-  section {
-    padding: 3.5rem 1.25rem;
-  }
- 
-  .mission-body {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
- 
-  .funds-grid,
-  .impact-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
- 
-  footer {
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-    padding: 2rem 1.25rem;
-  }
-}
+    :root {
+      --navy:   #080B1A;
+      --navy2:  #0E1228;
+      --purple: #7B35E8;
+      --violet: #9B4DFF;
+      --pink:   #D946C0;
+      --cyan:   #22D3EE;
+      --blue:   #3B82F6;
+      --white:  #F0F4FF;
+      --muted:  #8892B0;
+      --line:   rgba(123,53,232,0.25);
+      --grad:   linear-gradient(135deg, var(--cyan) 0%, var(--violet) 50%, var(--pink) 100%);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Space Grotesk', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Animated gradient orbs (ambient) ── */
+    .orbs {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.18;
+    }
+    .orb-1 { width: 600px; height: 600px; background: var(--violet); top: -150px; left: -100px; animation: drift1 18s ease-in-out infinite; }
+    .orb-2 { width: 500px; height: 500px; background: var(--cyan);   bottom: 5%; right: -100px; animation: drift2 22s ease-in-out infinite; }
+    .orb-3 { width: 350px; height: 350px; background: var(--pink);   top: 40%; left: 30%; animation: drift3 15s ease-in-out infinite; }
+    @keyframes drift1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(60px,80px)} }
+    @keyframes drift2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-80px,-60px)} }
+    @keyframes drift3 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(40px,-50px)} }
+    @media (prefers-reduced-motion: reduce) { .orb { animation: none; } }
+
+    /* ── Topbar ── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      background: rgba(8, 11, 26, 0.75);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .navbar-logo {
+      height: 56px;
+      width: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid transparent;
+      background: linear-gradient(var(--navy), var(--navy)) padding-box,
+                  var(--grad) border-box;
+    }
+    .topbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      font-size: 0.9rem;
+      font-family: 'Space Mono', monospace;
+    }
+    .topbar-nav a { color: var(--muted); transition: color 0.2s; }
+    .topbar-nav a:hover { color: var(--white); }
+    .nav-donate {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+    .nav-donate:hover { opacity: 0.85; }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 2rem 5rem;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 4rem;
+      align-items: center;
+      min-height: calc(100vh - 72px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 1.5rem;
+    }
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--cyan);
+    }
+
+    .hero-h1 {
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .hero-h1 .grad-text {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      line-height: 1.65;
+      color: var(--muted);
+      font-weight: 300;
+      max-width: 440px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.75rem;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: 'Space Grotesk', sans-serif;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--grad);
+      color: #fff;
+      box-shadow: 0 0 32px rgba(155,77,255,0.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 48px rgba(155,77,255,0.5); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+    .btn-outline:hover { border-color: var(--violet); color: var(--violet); }
+
+    /* ── Stat card panel ── */
+    .stat-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .stat-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1.75rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .stat-card:hover { border-color: rgba(155,77,255,0.5); }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(123,53,232,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .stat-card.featured {
+      border-color: rgba(34,211,238,0.4);
+      background: rgba(34,211,238,0.05);
+    }
+    .stat-card.featured::before {
+      background: linear-gradient(135deg, rgba(34,211,238,0.1) 0%, transparent 60%);
+    }
+    .stat-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.35rem;
+    }
+    .stat-card.featured .stat-num { font-size: 3.8rem; }
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.4;
+      font-family: 'Space Mono', monospace;
+    }
+    .stat-source {
+      font-size: 0.68rem;
+      color: rgba(136,146,176,0.5);
+      margin-top: 0.5rem;
+      font-family: 'Space Mono', monospace;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      max-width: 1100px;
+      margin: 0 auto;
+      height: 1px;
+      background: var(--line);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Sections ── */
+    section {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    .section-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--violet);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .section-tag::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--violet);
+    }
+
+    .section-h2 {
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── Mission ── */
+    .mission-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-top: 2rem;
+    }
+    .mission-lede {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      font-weight: 300;
+      color: var(--white);
+    }
+    .mission-lede strong {
+      font-weight: 600;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .mission-detail {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--muted);
+      font-weight: 300;
+    }
+    .mission-detail p + p { margin-top: 1rem; }
+
+    /* ── Where funds go ── */
+    .funds-section {
+      background: rgba(255,255,255,0.02);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .funds-section section { padding: 5rem 2rem; }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .fund-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    .fund-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(155,77,255,0.45);
+      box-shadow: 0 20px 60px rgba(123,53,232,0.15);
+    }
+    .fund-card-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .fund-card-head {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.1rem;
+      font-weight: 700;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+    .fund-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      color: var(--white);
+    }
+    .fund-card p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    /* ── CTA banner ── */
+    .cta-banner {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 2rem 5rem;
+    }
+    .cta-inner {
+      background: linear-gradient(135deg, rgba(123,53,232,0.25) 0%, rgba(34,211,238,0.12) 100%);
+      border: 1px solid rgba(155,77,255,0.35);
+      border-radius: 16px;
+      padding: 4rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-inner::before {
+      content: '';
+      position: absolute;
+      top: -60px; left: 50%; transform: translateX(-50%);
+      width: 400px; height: 200px;
+      background: radial-gradient(ellipse, rgba(155,77,255,0.25), transparent 70%);
+      pointer-events: none;
+    }
+    .cta-inner h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .cta-inner p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-lg { padding: 1rem 2.5rem; font-size: 1.05rem; }
+
+    /* ── Footer ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--line);
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-family: 'Space Mono', monospace;
+    }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { transition: color 0.2s; }
+    .footer-links a:hover { color: var(--cyan); }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 3rem 1.25rem 4rem;
+        min-height: auto;
+        gap: 3rem;
+      }
+      .stat-panel { flex-direction: row; flex-wrap: wrap; gap: 1rem; }
+      .stat-card { flex: 1 1 calc(50% - 0.5rem); }
+      .mission-grid, .cards-grid { grid-template-columns: 1fr; gap: 2rem; }
+      section { padding: 3.5rem 1.25rem; }
+      .cta-inner { padding: 2.5rem 1.5rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
   </style>
 </head>
 <body>
- 
+
+  <!-- Ambient orbs -->
+  <div class="orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- Top bar -->
   <header class="topbar">
-    <img src="AURA Logo.png"
-      alt="AURA"
-       class="navbar-logo">
-    <nav class="topbar-nav">
-      <a href="#mission">Our Mission</a>
-      <a href="About Us.html">About us</a>
-      <a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early" class="topbar-cta">Donate</a>
-    </nav>
+    <div class="topbar-inner">
+      <img src="AURA_Logo.png" alt="AURA Awareness" class="navbar-logo">
+      <nav class="topbar-nav">
+        <a href="#mission">Our Mission</a>
+        <a href="About Us.html">About Us</a>
+        <a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early" class="nav-donate">Donate →</a>
+      </nav>
+    </div>
   </header>
- 
+
+  <!-- Hero -->
   <main class="hero" id="hero">
- 
     <div class="hero-text">
-      <p class="eyebrow">Cancer Awareness &amp; Early Detection</p>
- 
+      <div class="eyebrow">Cancer Awareness &amp; Early Detection</div>
       <h1 class="hero-h1">
-        Early Detection,
-        <em><span class="accent">Enhanced</span></em> Life.
+        Early Detection,<br>
+        <span class="grad-text">Enhanced Life.</span>
       </h1>
- 
       <p class="hero-sub">
         Raising funds to aid early detection of cancers through our community —
         because the earliest signal is still the most powerful one.
       </p>
- 
       <div class="hero-actions">
         <a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early" class="btn btn-primary">Donate now</a>
-        <a href="#mission" class="btn btn-ghost">Learn more</a>
+        <a href="#mission" class="btn btn-outline">Learn more</a>
       </div>
     </div>
- 
-    <aside class="signal" aria-label="Early detection statistic">
-      <div class="signal-track">
-        <span class="signal-pulse" aria-hidden="true"></span>
+
+    <!-- Stat cards -->
+    <div class="stat-panel" aria-label="Key statistics">
+      <div class="stat-card featured">
+        <div class="stat-num">90%</div>
+        <div class="stat-label">5-year survival rate<br>when caught early</div>
+        <div class="stat-source">— American Cancer Society</div>
       </div>
-      <p class="signal-figure">90<span class="signal-unit">%</span></p>
-      <p class="signal-label">5-year survival<br>rate when caught<br>early</p>
-      <p class="signal-source">— placeholder, update with source</p>
-    </aside>
- 
+      <div class="stat-card">
+        <div class="stat-num">$1,500</div>
+        <div class="stat-label">Our fundraising goal</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Of proceeds donated<br>to ACS</div>
+      </div>
+    </div>
   </main>
- 
+
+  <div class="divider"></div>
+
+  <!-- Mission -->
   <section class="mission" id="mission">
-    <p class="section-eyebrow">Our Mission</p>
-    <div class="mission-body">
+    <div class="section-tag">Our Mission</div>
+    <h2 class="section-h2">The gap between <span class="grad-text">noticed</span> and<br>found too late.</h2>
+    <div class="mission-grid">
       <p class="mission-lede">
-        AURA exists because the gap between "noticed early" and "found too late"
-        is still where most cancer outcomes are decided.
+        AURA exists because most cancer outcomes are still decided by <strong>how early a signal is caught</strong> — and too many signals go unheard.
       </p>
       <div class="mission-detail">
         <p>
-          "Raising funds to aid early detection of cancers through our community"
+          We raise funds to aid early detection of cancers through our community. Every dollar we collect goes directly to the American Cancer Society to fund research, screenings, and education.
         </p>
         <p>
-          We uphold this mission statement by donating all proceeds to the American Cancer Society. Our goal is to surpass to 1500 dollars in donations.
+          Our goal is to surpass $1,500 in donations. With your support, we can move that needle and help more people get the scans, checkups, and resources they need before it's too late.
         </p>
       </div>
     </div>
   </section>
- 
-  <section class="funds" id="funds">
-    <div class="funds-inner">
-      <p class="section-eyebrow">Where Your Money Goes</p>
-      <h2 class="section-h2">How donations are used</h2>
-      <div class="funds-grid">
-        <div class="funds-card">
-          <span class="funds-pct">Funds</span>
-          <h3>$750</h3>
-          <p>This is around half of our mission</p>
+
+  <!-- Funds -->
+  <div class="funds-section">
+    <section id="funds">
+      <div class="section-tag">Transparency</div>
+      <h2 class="section-h2">Where your money goes</h2>
+      <div class="cards-grid">
+        <div class="fund-card">
+          <div class="fund-card-icon">🎯</div>
+          <div class="fund-card-head">$750 raised</div>
+          <h3>Halfway there</h3>
+          <p>Every dollar counts. We're halfway to our $1,500 goal — and this is just the beginning of what AURA can do.</p>
         </div>
-        <div class="funds-card">
-          <span class="funds-pct">Where?</span>
-          <h3>American Cancer Society</h3>
-          <p>Funds research, supports early detection, and unifies partnershipsof ACS to raise awareness of early warning signs.</p>
+        <div class="fund-card">
+          <div class="fund-card-icon">🎗️</div>
+          <div class="fund-card-head">American Cancer Society</div>
+          <h3>100% donated</h3>
+          <p>All proceeds go directly to the ACS — funding early detection research, community screenings, and public education campaigns.</p>
         </div>
-        <div class="funds-card">
-          <span class="funds-pct">YOU?</span>
-          <h3>Donate!!</h3>
-          <p>Your support can save lives and improve healthcare worldwide</p>
+        <div class="fund-card">
+          <div class="fund-card-icon">💜</div>
+          <div class="fund-card-head">You matter</div>
+          <h3>Your impact</h3>
+          <p>Every donation supports a real person's chance at an early diagnosis. Small contributions compound into lives saved.</p>
         </div>
       </div>
-     </div>
-  </section>
- 
+    </section>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-banner">
+    <div class="cta-inner">
+      <h2>Help us reach <span class="grad-text">$1,500</span></h2>
+      <p>Every contribution brings us closer to funding early detection programs that save lives. It takes less than two minutes.</p>
+      <a href="https://www.gofundme.com/f/auras-mission-detect-cancer-early" class="btn btn-primary btn-lg">Donate on GoFundMe →</a>
+    </div>
+  </div>
+
   <footer>
     <span>© 2026 AURA Awareness</span>
     <div class="footer-links">
@@ -574,6 +575,6 @@ footer .footer-links {
       <a href="#hero">Back to top</a>
     </div>
   </footer>
- 
+
 </body>
 </html>
